@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Dirty Paw Paw's Dog Park Map</title>
+    <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            html, body, #map {
+                height: 100%;
+                font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+            }
+
+            .lorem {
+                font-style: italic;
+                color: #AAA;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sidebar" class="sidebar collapsed">
+            <div class="sidebar-tabs">
+                <ul role="tablist">
+                    <li><a href="#home" role="tab"><i class="fa fa-map-signs" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="sidebar-pane" id="home">
+                    <h1 class="sidebar-header">
+                        Dog Park Map
+                        <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                    </h1>
+
+                    <div class="btn-group">
+                      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filter by City <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" data-bind="foreach: cities">
+                        <li><a href="#" data-bind="text: name, click: $parent.filterByCity"></a></li>
+                      </ul>
+                    </div>
+
+                    <input type="button" class="btn btn-default" value="Show All Dog Parks" data-bind="click: showAllLocations">
+
+                    <ul class="list-group" data-bind="foreach: locations">
+                      <li class="list-group-item">
+                          <a href="#" data-bind="click: showInfoWindow">
+                              <span data-bind="text: data.title"></span>
+                          </a>
+                      </li>
+                    </ul>
+
+                  </div>
+
+            </div>
+        </div>
+
+        <div id="map" class="sidebar-map"></div>
+
+    <script src="js/lib/jquery-3.2.1.min.js"></script>
+    <script src="js/lib/jquery-sidebar.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/knockout-3.4.2.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/map-styles.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCswTlHZWumBvFgYNgHI3oCp8-uhPzZlqo&libraries=geometry&v=3&callback=initMap">
+    </script>
+
+</body>
+
+</html>
