@@ -20,14 +20,14 @@ Clicking on the left arrow or the menu button on the sidebar to hide it. Clickin
 
 ### APIs Used
 ---
-- Google Maps Javascript API
-- [OpenWeatherMap Current Weather API Link] (http://openweathermap.org/current)
+- [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/reference)
+- [OpenWeatherMap Current Weather API Link](http://openweathermap.org/current)
 
 
 ## Resources Used
 ---
- - [KnockoutJS info] (http://knockoutjs.com/index.html)
- - [Google Maps API Reference Documentation] (https://developers.google.com/maps/documentation/)
- - [Icon Archive for Tennis Ball Marker Icons] (http://www.iconarchive.com/show/pixelophilia-icons-by-omercetin/tennis-ball-icon.html)
- - [JavaScript Callback] (http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)
+ - [KnockoutJS info](http://knockoutjs.com/index.html)
+ - [Google Maps API Reference Documentation](https://developers.google.com/maps/documentation/)
+ - [Icon Archive for Tennis Ball Marker Icons](http://www.iconarchive.com/show/pixelophilia-icons-by-omercetin/tennis-ball-icon.html)
+ - [JavaScript Callback](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)
  - Additional inspiration taken from the best Developer I know Derrick Gremillion
