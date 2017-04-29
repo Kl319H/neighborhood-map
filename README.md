@@ -21,7 +21,7 @@ Clicking on the left arrow or the menu button on the sidebar to hide it. Clickin
 ### APIs Used
 ---
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/reference)
-- [OpenWeatherMap Current Weather API Link](http://openweathermap.org/current)
+- [OpenWeatherMap Current Weather API](http://openweathermap.org/current)
 
 
 ## Resources Used
