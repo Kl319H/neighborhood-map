@@ -50,7 +50,7 @@ function createMarkers() {
       this.setAnimation(google.maps.Animation.BOUNCE);
       setTimeout(function() {
         self.setAnimation(null);
-      }, 3000);
+      }, 2100);
     });
 
     marker.addListener('mouseover', function() {
@@ -71,6 +71,29 @@ function openMarkerInfoWindowByID(markerID) {
   });
 }
 
+function addWeatherToContent(latLng, content, cb) {
+
+  getWeather(latLng, function(error, weatherData) {
+    if (!error) {
+      var temp = parseInt(weatherData.main.temp);
+      var iconCode = weatherData.weather[0].icon;
+      var iconUrl = "http://openweathermap.org/img/w/" + iconCode +
+        ".png";
+
+      console.log(weatherData);
+      content += '<img src="' + iconUrl + '" alt=""><p>Temp ' +
+        temp +
+        '&deg;</p> <img width="130" src="images/logo_OpenWeatherMap_orange.svg" > ';
+    } else {
+      console.log(error);
+      content += '<p>' + error + '</p>';
+    }
+    cb(content);
+  });
+
+}
+
+
 function populateInfoWindow(marker, infowindow) {
   // Check to make sure the infowindow is not already opened on this marker.
   if (infowindow.marker != marker) {
@@ -88,42 +111,32 @@ function populateInfoWindow(marker, infowindow) {
     var radius = 50;
     // get the pano & display it or put up an error message
     function getStreetView(data, status) {
+
+      var content = "";
       if (status == google.maps.StreetViewStatus.OK) {
-        var nearStreetViewLocation = data.location.latLng;
-        var heading = google.maps.geometry.spherical.computeHeading(
-          nearStreetViewLocation, marker.position);
-        infowindow.setContent('<h5>' + marker.title +
-          '</h5><div id="pano"></div><div id="weather"></div>');
-        var panoramaOptions = {
-          position: nearStreetViewLocation,
-          pov: {
-            heading: heading,
-            pitch: 30
-          }
-        };
-        var panorama = new google.maps.StreetViewPanorama(
-          document.getElementById('pano'), panoramaOptions);
+        content = '<h5>' + marker.title +
+          '</h5><div id="pano"></div>';
+
       } else {
-        infowindow.setContent('<h5>' + marker.title + '</h5>' +
-          '<div>No Street View Found</div><div id="weather"></div>');
+        content = '<h5>' + marker.title + '</h5>' +
+          '<div>No Street View Found</div>';
       }
+      addWeatherToContent(latLng, content, function(fullContent) {
+        infowindow.setContent(fullContent);
+        if (status == google.maps.StreetViewStatus.OK) {
+          var nearStreetViewLocation = data.location.latLng;
+          var heading = google.maps.geometry.spherical.computeHeading(
+            nearStreetViewLocation, marker.position);
 
-      getWeather(latLng, function(error, weatherData) {
-        if (!error) {
-          var temp = parseInt(weatherData.main.temp);
-          var iconCode = weatherData.weather[0].icon;
-          var iconUrl = "http://openweathermap.org/img/w/" + iconCode +
-            ".png";
-
-          console.log(weatherData);
-          var html = '<img src="' + iconUrl + '" alt=""><p>Temp ' +
-            temp +
-            '&deg;</p> <img width="130" src="images/logo_OpenWeatherMap_orange.svg" > ';
-          $("#weather").html(html);
-        } else {
-          console.log(error);
-          var html = '<p>' + error + '</p>';
-          $("#weather").html(html);
+          var panoramaOptions = {
+            position: nearStreetViewLocation,
+            pov: {
+              heading: heading,
+              pitch: 30
+            }
+          };
+          var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), panoramaOptions);
         }
       });
     }

@@ -6,11 +6,19 @@ body {
   padding: 0;
 }
 
+#map {
+    height: 100%;
+}
+
 #pano {
   width: 200px;
   height: 200px;
 }
 
+.map-api-error{
+    width: 300px;
+    margin: auto;
+}
 
 .sidebar {
   position: absolute;

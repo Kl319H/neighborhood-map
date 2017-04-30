@@ -10,22 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <title>Dirty Paw Paw's Dog Park Map</title>
-    <style>
-            body {
-                padding: 0;
-                margin: 0;
-            }
 
-            html, body, #map {
-                height: 100%;
-                font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
-            }
-
-            .lorem {
-                font-style: italic;
-                color: #AAA;
-            }
-        </style>
     </head>
     <body>
         <div id="sidebar" class="sidebar collapsed">
@@ -65,7 +50,9 @@
 
             </div>
         </div>
-
+        <div class="map-api-error" data-bind="visible: showMapApiError">
+          <h4>Failed to load Google Maps</h4>
+        </div>
         <div id="map" class="sidebar-map"></div>
 
     <script src="js/lib/jquery-3.2.1.min.js"></script>
@@ -76,7 +63,7 @@
     <script src="js/map-styles.js"></script>
     <script src="js/map.js"></script>
     <script src="js/main.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCswTlHZWumBvFgYNgHI3oCp8-uhPzZlqo&libraries=geometry&v=3&callback=initMap">
+    <script async defer onerror="onMapApiError()" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCswTlHZWumBvFgYNgHI3oCp8-uhPzZlqo&libraries=geometry&v=3&callback=initMap">
     </script>
 
 </body>

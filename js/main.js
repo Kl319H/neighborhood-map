@@ -10,6 +10,8 @@ $(document).ready(function() {
   });
 });
 
+
+
 var Location = function(locationData) {
   this.data = locationData;
 
@@ -41,6 +43,7 @@ uniqueCities.forEach(function(cityName) {
   //filter and display or remove locations
 var ViewModel = function() {
   var self = this;
+  this.showMapApiError = ko.observable(false);
   this.locations = ko.observableArray(processedLocations);
   this.cities = processedCities;
   this.showAllLocations = function() {
@@ -64,3 +67,7 @@ var ViewModel = function() {
 };
 var viewModel = new ViewModel();
 ko.applyBindings(viewModel);
+
+function onMapApiError() {
+  viewModel.showMapApiError(true);
+}

@@ -4,6 +4,8 @@ We were asked to develop a single-page application featuring a neighborhood map,
 
 ### How to Use
 ---
+Open index.html in a browser.
+
 [Demo](https://kl319h.github.io/neighborhood-map/)
 
 The screen will show a Google Map of the Denver Metro Area, with several locations of interest set up as pins on the map. Locations can be chosen by:
