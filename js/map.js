@@ -155,14 +155,19 @@ function getWeather(latLng, cb) {
     "&appid=218ae9b4cfe09af3abd8acdfa0fbaa15&units=imperial";
   $.ajax(url).done(function(data, status) {
     cb(null, data);
-  }).fail(function() {
+  }).fail(function(e) {
+    console.log(e);
     cb('Weather not available', null);
   });
 }
 // Displays Markers for locations in array
 function showLocation() {
-  largeInfowindow.close();
-  sidebar.close();
+  if (largeInfowindow) {
+    largeInfowindow.close();
+  }
+  if (sidebar) {
+    sidebar.close();
+  }
   var bounds = new google.maps.LatLngBounds();
   // Extend the boundaries of the map for each marker and display the marker
   for (var i = 0; i < markers.length; i++) {
