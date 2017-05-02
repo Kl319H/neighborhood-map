@@ -150,7 +150,7 @@ function populateInfoWindow(marker, infowindow) {
 }
 
 function getWeather(latLng, cb) {
-  var url = "http://api.openweathermap.org/data/2.5/weather?lat=" +
+  var url = "https://api.openweathermap.org/data/2.5/weather?lat=" +
     latLng.lat + "&lon=" + latLng.lng +
     "&appid=218ae9b4cfe09af3abd8acdfa0fbaa15&units=imperial";
   $.ajax(url).done(function(data, status) {
